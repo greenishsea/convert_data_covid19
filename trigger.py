@@ -2,7 +2,7 @@ import os
 from logics.logic import convert_data
 
 
-INFILE_PATH = os.environ.get('GITHUB_WORKSPACE') + "/docs/timeseries.json"
+INFILE_PATH = os.environ.get('GITHUB_WORKSPACE') + "/data" + "/docs/timeseries.json"
 OUTFILE_PATH = 'output/data.json'
 
 if __name__ == '__main__':
