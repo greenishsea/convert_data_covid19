@@ -13,7 +13,7 @@ def convert_data(infile_path, outfile_path):
         for k, v in data.items():
             df = json_normalize(v)
             mask = (df['date'] > start_date_string) & (df['date'] <= today_string)
-            filtered_df = df.loc[mask]
+            filtered_df = df.drop(columns='recovered').loc[mask]
             data[k] = filtered_df.to_dict('r')
 
     with open(outfile_path, 'w') as outf:
