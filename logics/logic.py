@@ -16,5 +16,5 @@ def convert_data(infile_path, outfile_path):
             filtered_df = df.drop(columns='recovered').loc[mask]
             data[k] = filtered_df.to_dict('r')
 
-    with open(outfile_path, 'w') as outf:
-        json.dump(data, outf, ensure_ascii=False)
+        with open(outfile_path, 'w') as outf:
+            json.dump(data, outf, ensure_ascii=False)
