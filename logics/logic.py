@@ -8,6 +8,7 @@ def convert_data(infile_path, outfile_path):
     today_string = today.strftime('%Y-%-m-%-d')
     start_date_string = (today + datetime.timedelta(days=-180)).strftime('%Y-%-m-%-d')
 
+    data = None
     with open(infile_path) as inf:
         data = json.load(inf)
         for k, v in data.items():
@@ -16,5 +17,5 @@ def convert_data(infile_path, outfile_path):
             filtered_df = df.drop(columns='recovered').loc[mask]
             data[k] = filtered_df.to_dict('r')
 
-        with open(outfile_path, 'w') as outf:
-            json.dump(data, outf, ensure_ascii=False)
+    with open(outfile_path, 'w') as outf:
+        json.dump(data, outf, ensure_ascii=False)
