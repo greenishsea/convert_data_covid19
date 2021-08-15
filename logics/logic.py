@@ -19,8 +19,7 @@ def convert_data(infile_path, outfile_path):
             # Regularize date string to zero padding
             df['date'] = pd.to_datetime(df['date']).dt.strftime('%Y-%m-%d')
             mask = (df['date'] >= start_date_string) & (df['date'] <= today_string)
-            filtered_df = df.loc[mask]
-            data[k] = filtered_df.to_dict('r')
+            data[k] = df.loc[mask].to_dict('r')
 
     with open(outfile_path, 'w') as outf:
         json.dump(data, outf, ensure_ascii=False)
