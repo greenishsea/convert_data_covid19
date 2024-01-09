@@ -14,7 +14,7 @@ def convert_data(infile_path, outfile_path):
         data = json.load(inf)
         for k, v in data.items():
             df = json_normalize(v)
-            # Remove recovered data
+            # Remove recovered column data
             df = df.drop(columns='recovered')
             # Regularize date string to zero padding
             df['date'] = pd.to_datetime(df['date']).dt.strftime('%Y-%m-%d')
